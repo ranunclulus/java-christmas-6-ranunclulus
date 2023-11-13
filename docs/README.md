@@ -1,7 +1,7 @@
 # 🎄 크리스마스 이벤트 🎄
 ## 🚀 기능 요구 사항 🚀
 
-- [ ]  프로젝트 구조화 → Controller, Domain, Enum 등등 기능 나누어서 패키지 설정
+- [x]  프로젝트 구조화 → Controller, Domain, Enum 등등 기능 나누어서 패키지 설정
 - [ ]  Enum 생성
     - [ ]  메뉴 Enum
     - [ ]  음식 종류 Enum
