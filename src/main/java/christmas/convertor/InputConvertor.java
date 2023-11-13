@@ -1,16 +1,21 @@
 package christmas.convertor;
 
-import christmas.exception.ErrorCode;
-import christmas.service.validator.InputValidator;
+import christmas.domain.Order;
+import christmas.service.validator.MenuValidator;
+import christmas.view.validator.InputValidator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputConvertor {
     public static int requireVisitDay(String visitDay) {
-        if (!InputValidator.isDigit(visitDay)) {
-            throw new IllegalArgumentException(ErrorCode.INVALID_STRING_INPUT.getMessage());
+        try {
+            InputValidator.dayIsDigit(visitDay);
+            InputValidator.visitDayCheck(visitDay);
+        } catch (IllegalArgumentException error) {
+            throw new IllegalArgumentException(error.getMessage());
         }
-        if (!InputValidator.visitDayCheck(visitDay)) {
-            throw new IllegalArgumentException(ErrorCode.INVALID_DAY_INPUT.getMessage());
-        }
+
         return Integer.parseInt(visitDay);
     }
 }

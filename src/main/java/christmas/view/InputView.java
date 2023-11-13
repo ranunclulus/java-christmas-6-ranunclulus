@@ -8,4 +8,9 @@ public class InputView {
         return Console.readLine();
     }
 
+    public static String requireOrder() {
+        System.out.println(Constant.ASK_ORDER);
+        return Console.readLine();
+    }
+
 }
