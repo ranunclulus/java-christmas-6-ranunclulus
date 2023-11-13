@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.convertor.InputConvertor;
+import christmas.convertor.OrderSheetConvertor;
 import christmas.domain.OrderSheet;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -14,6 +15,11 @@ public class ChristmasEventController {
 
         // 메뉴 주문
         orderMenu(orderSheet);
+
+        // 할인 전 주문 금액 출력
+        OutputView.printEventIntro();
+        OutputView.printOrder(OrderSheetConvertor.convertToMap(orderSheet));
+        OutputView.printBefore(orderSheet.regularPrice());
 
     }
 

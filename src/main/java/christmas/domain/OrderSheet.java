@@ -63,4 +63,12 @@ public class OrderSheet {
             throw new IllegalArgumentException(ErrorCode.INVALID_ORDER_FORM.getMessage());
         }
     }
+
+    public int regularPrice() {
+        return 0;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
 }
