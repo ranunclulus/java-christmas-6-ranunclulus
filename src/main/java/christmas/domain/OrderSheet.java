@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.domain.constants.Menu;
 import christmas.exception.ErrorCode;
 import christmas.service.Constant;
 import christmas.service.validator.MenuValidator;
@@ -12,11 +13,13 @@ public class OrderSheet {
     private int visitDay;
     private List<Order> orders;
     private int totalOrderCnt;
+    private int totalAmount;
 
     public OrderSheet(int visitDay) {
         this.visitDay = visitDay;
         this.orders = new ArrayList<>();
         this.totalOrderCnt = 0;
+        this.totalAmount = 0;
     }
 
     public void addOrder(String rawOrder) {
@@ -64,11 +67,24 @@ public class OrderSheet {
         }
     }
 
-    public int regularPrice() {
-        return 0;
+    public void regularPrice() {
+        for (Order order : orders) {
+            String menuName = order.getMenuName();
+            int orderCount = order.getCount();
+
+            for (Menu menu : Menu.values()) {
+                if (menuName.equals(menu.getMenu())) {
+                    totalAmount += menu.getPrice() * orderCount;
+                }
+            }
+        }
     }
 
     public List<Order> getOrders() {
         return orders;
+    }
+
+    public int getTotalAmount() {
+        return totalAmount;
     }
 }

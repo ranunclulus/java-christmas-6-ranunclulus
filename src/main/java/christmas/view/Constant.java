@@ -8,5 +8,5 @@ public class Constant {
     public static final String ORDER_MENU = "<주문 메뉴>";
     public static final String ORDER_MENU_FORM = "%s %d개\n";
     public static final String BEFORE_DISCOUNT = "<할인 전 총주문 금액>";
-    public static final String AMOUNT_FORM = "$s원\n";
+    public static final String AMOUNT_FORM = "%s원\n";
 }

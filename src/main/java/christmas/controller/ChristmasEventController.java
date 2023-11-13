@@ -16,10 +16,13 @@ public class ChristmasEventController {
         // 메뉴 주문
         orderMenu(orderSheet);
 
-        // 할인 전 주문 금액 출력
+        // 주문 내용 출력
         OutputView.printEventIntro();
         OutputView.printOrder(OrderSheetConvertor.convertToMap(orderSheet));
-        OutputView.printBefore(orderSheet.regularPrice());
+
+        // 할인 전 주문 금액
+        orderSheet.regularPrice();
+        OutputView.printBefore(orderSheet.getTotalAmount());
 
     }
 
