@@ -128,4 +128,8 @@ public class OrderSheet {
     }
 
     public Discount getDiscount() { return discount; }
+
+    public int getFinalAmount() {
+        return totalAmount - (discount.getTotalDiscount() - discount.getPresentEvent());
+    }
 }

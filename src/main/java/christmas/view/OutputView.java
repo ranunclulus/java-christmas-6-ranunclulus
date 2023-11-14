@@ -11,7 +11,6 @@ public class OutputView {
         System.out.println(Constant.ONBOARDING);
     }
 
-
     public static void printError(String message) {
         System.out.println(message);
     }
@@ -62,4 +61,25 @@ public class OutputView {
     }
 
 
+    public static void totalDiscount(int totalDiscount) {
+        System.out.println(Constant.TOTAL_DISCOUNT);
+        System.out.printf(Constant.AMOUNT_FORM, OutputConvertor.toPrice(-totalDiscount));
+        System.out.println();
+    }
+
+    public static void printAfter(int finalAmount) {
+        System.out.println(Constant.AFTER_DISCOUNT);
+        System.out.printf(Constant.AMOUNT_FORM, OutputConvertor.toPrice(finalAmount));
+        System.out.println();
+    }
+
+    public static void printBadge(String badge) {
+        System.out.println(Constant.BADGE);
+        System.out.println(badge);
+    }
+
+    public static void printNoBadge() {
+        System.out.println(Constant.BADGE);
+        System.out.println(Constant.NOT);
+    }
 }

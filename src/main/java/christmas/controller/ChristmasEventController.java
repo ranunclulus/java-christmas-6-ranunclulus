@@ -10,27 +10,30 @@ import christmas.view.OutputView;
 
 public class ChristmasEventController {
     public void run() {
-        // 방문 날짜 설정
         OutputView.printOnboarding();
         int visitDay = setVisitDay();
         OrderSheet orderSheet = new OrderSheet(visitDay);
 
-        // 메뉴 주문
         orderMenu(orderSheet);
-
-        // 주문 내용 출력
         OutputView.printEventIntro();
         OutputView.printOrder(OrderSheetConvertor.convertToMap(orderSheet));
-
-        // 할인 전 주문 금액
         orderSheet.regularPrice();
         OutputView.printBefore(orderSheet.getTotalAmount());
-
-        // 증정 내용
         presentEvent(orderSheet);
-
-        // 혜택 계산
         discount(orderSheet);
+        OutputView.totalDiscount(orderSheet.getDiscount().getTotalDiscount());
+        OutputView.printAfter(orderSheet.getFinalAmount());
+        giveBadge(orderSheet);
+    }
+
+    private void giveBadge(OrderSheet orderSheet) {
+        if (orderSheet.getDiscount().haveBadge()) {
+            orderSheet.getDiscount().calBadge();
+            OutputView.printBadge(orderSheet.getDiscount().getBadge());
+        }
+        if (!orderSheet.getDiscount().haveBadge()) {
+            OutputView.printNoBadge();
+        }
     }
 
     private void orderMenu(OrderSheet orderSheet) {

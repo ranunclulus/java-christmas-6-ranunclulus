@@ -20,5 +20,6 @@ public class Constant {
     public static final String weekendDiscount = "주말 할인";
     public static final String specialDiscount = "특별 할인";
     public static final String presentEvent = "증정 이벤트";
+    public static final int minimunBadgeAmount = 5000;
 
 }

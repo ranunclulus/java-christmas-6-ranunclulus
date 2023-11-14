@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.domain.constants.Badge;
 import christmas.service.Constant;
 
 import java.util.Arrays;
@@ -11,6 +12,7 @@ public class Discount {
     private int weekendDiscount;
     private int specialDiscount;
     private int presentEvent;
+    private Badge badge;
 
     Discount() {
         this.totalDiscount = 0;
@@ -23,6 +25,7 @@ public class Discount {
 
     public void isPresented(int price) {
         presentEvent = price;
+        totalDiscount += price;
     }
 
     public void calChristmas(int visitDay) {
@@ -82,5 +85,25 @@ public class Discount {
 
     public int getPresentEvent() {
         return presentEvent;
+    }
+
+    public void calBadge() {
+        if (totalDiscount >= Badge.STAR.getCondition() && totalDiscount < Badge.TREE.getCondition()) {
+            badge = Badge.STAR;
+        }
+        if (totalDiscount >= Badge.TREE.getCondition() && totalDiscount < Badge.SANTA.getCondition()) {
+            badge = Badge.TREE;
+        }
+        if (totalDiscount >= Badge.SANTA.getCondition()) {
+            badge = Badge.SANTA;
+        }
+    }
+
+    public boolean haveBadge() {
+        return totalDiscount >= Constant.minimunBadgeAmount;
+    }
+
+    public String getBadge() {
+        return badge.getBadeName();
     }
 }

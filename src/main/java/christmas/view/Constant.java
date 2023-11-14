@@ -13,4 +13,7 @@ public class Constant {
     public static final String NOT = "없음";
     public static final String DISCOUNT = "<혜택 내역>";
     public static final String DISCOUNT_FORM = "%s: %s원\n";
+    public static final String TOTAL_DISCOUNT = "<총혜택 금액>";
+    public static final String AFTER_DISCOUNT = "<할인 후 예상 결제 금액>";
+    public static final String BADGE = "<12월 이벤트 배지>";
 }
