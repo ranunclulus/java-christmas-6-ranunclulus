@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.convertor.DiscountConvertor;
 import christmas.convertor.InputConvertor;
 import christmas.convertor.OrderSheetConvertor;
 import christmas.domain.OrderSheet;
@@ -28,7 +29,8 @@ public class ChristmasEventController {
         // 증정 내용
         presentEvent(orderSheet);
 
-
+        // 혜택 계산
+        discount(orderSheet);
     }
 
     private void orderMenu(OrderSheet orderSheet) {
@@ -58,6 +60,16 @@ public class ChristmasEventController {
         }
         if (!orderSheet.getIsPresented()) {
             OutputView.isNotPresented();
+        }
+    }
+
+    private void discount(OrderSheet orderSheet) {
+        orderSheet.calDiscount();
+        if (orderSheet.isDiscounted()) {
+            OutputView.printDiscount(DiscountConvertor.convertToMap(orderSheet.getDiscount()));
+        }
+        if (!orderSheet.isDiscounted()) {
+            OutputView.isNotDiscounted();
         }
     }
 }

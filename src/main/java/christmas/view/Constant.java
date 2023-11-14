@@ -10,5 +10,7 @@ public class Constant {
     public static final String BEFORE_DISCOUNT = "<할인 전 총주문 금액>";
     public static final String AMOUNT_FORM = "%s원\n";
     public static final String PRESENTED = "<증정 메뉴>";
-    public static final String NOT_PRESENTED = "없음";
+    public static final String NOT = "없음";
+    public static final String DISCOUNT = "<혜택 내역>";
+    public static final String DISCOUNT_FORM = "%s: %s원\n";
 }

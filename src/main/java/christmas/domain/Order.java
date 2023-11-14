@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import christmas.domain.constants.Menu;
+import christmas.domain.constants.MenuType;
 
 public class Order {
     private Menu menu;
@@ -19,7 +20,10 @@ public class Order {
         return menu.getMenu();
     }
 
+    public MenuType getMenuType() { return menu.getMenuType(); }
+
     public int getCount() {
         return count;
     }
+
 }

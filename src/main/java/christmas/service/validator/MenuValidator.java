@@ -22,4 +22,13 @@ public class MenuValidator {
         }
         throw new IllegalArgumentException(ErrorCode.INVALID_PRESENTED_MENU.getMessage());
     }
+
+    public static int getPresentPrice() {
+        for (Menu menu : Menu.values()) {
+            if (menu.isPresented()) {
+                return menu.getPrice();
+            }
+        }
+        throw new IllegalArgumentException(ErrorCode.INVALID_PRESENTED_MENU.getMessage());
+    }
 }

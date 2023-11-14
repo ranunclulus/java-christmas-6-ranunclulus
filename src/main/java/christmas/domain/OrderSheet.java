@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import christmas.domain.constants.Menu;
+import christmas.domain.constants.MenuType;
 import christmas.exception.ErrorCode;
 import christmas.service.Constant;
 import christmas.service.validator.MenuValidator;
@@ -15,6 +16,7 @@ public class OrderSheet {
     private int totalOrderCnt;
     private int totalAmount;
     private boolean isPresented;
+    private Discount discount;
 
     public OrderSheet(int visitDay) {
         this.visitDay = visitDay;
@@ -22,6 +24,7 @@ public class OrderSheet {
         this.totalOrderCnt = 0;
         this.totalAmount = 0;
         this.isPresented = false;
+        this.discount = new Discount();
     }
 
     public void addOrder(String rawOrder) {
@@ -85,7 +88,29 @@ public class OrderSheet {
     public void calPresented() {
         if (totalAmount >= Constant.presentationCondition) {
             isPresented = true;
+            discount.isPresented(MenuValidator.getPresentPrice());
         }
+    }
+
+    public void calDiscount() {
+        discount.calChristmas(visitDay);
+        discount.calWeekday(visitDay, getDesertCount());
+        discount.calWeekend(visitDay, getMainCount());
+        discount.calSpecial(visitDay);
+    }
+
+    private int getMainCount() {
+        return (int) orders.stream()
+                .filter(order -> order.getMenuType() == MenuType.MAIN)
+                .mapToInt(Order::getCount)
+                .sum();
+    }
+
+    private int getDesertCount() {
+        return (int) orders.stream()
+                .filter(order -> order.getMenuType() == MenuType.DESERT)
+                .mapToInt(Order::getCount)
+                .sum();
     }
 
     public List<Order> getOrders() {
@@ -98,4 +123,9 @@ public class OrderSheet {
 
     public boolean getIsPresented() { return isPresented; }
 
+    public boolean isDiscounted() {
+        return discount.getTotalDiscount() != 0;
+    }
+
+    public Discount getDiscount() { return discount; }
 }

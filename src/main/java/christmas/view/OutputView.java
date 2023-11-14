@@ -43,6 +43,23 @@ public class OutputView {
 
     public static void isNotPresented() {
         System.out.println(Constant.PRESENTED);
-        System.out.println(Constant.NOT_PRESENTED);
+        System.out.println(Constant.NOT);
+        System.out.println();
     }
+
+    public static void isNotDiscounted() {
+        System.out.println(Constant.DISCOUNT);
+        System.out.println(Constant.NOT);
+        System.out.println();
+    }
+
+    public static void printDiscount(Map<String, String> discountResult) {
+        System.out.println(Constant.DISCOUNT);
+        for (Map.Entry<String, String> entry : discountResult.entrySet()) {
+            System.out.printf(Constant.DISCOUNT_FORM, entry.getKey(), entry.getValue());
+        }
+        System.out.println();
+    }
+
+
 }
