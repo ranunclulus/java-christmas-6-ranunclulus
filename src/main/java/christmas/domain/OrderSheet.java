@@ -14,12 +14,14 @@ public class OrderSheet {
     private List<Order> orders;
     private int totalOrderCnt;
     private int totalAmount;
+    private boolean isPresented;
 
     public OrderSheet(int visitDay) {
         this.visitDay = visitDay;
         this.orders = new ArrayList<>();
         this.totalOrderCnt = 0;
         this.totalAmount = 0;
+        this.isPresented = false;
     }
 
     public void addOrder(String rawOrder) {
@@ -80,6 +82,12 @@ public class OrderSheet {
         }
     }
 
+    public void calPresented() {
+        if (totalAmount >= Constant.presentationCondition) {
+            isPresented = true;
+        }
+    }
+
     public List<Order> getOrders() {
         return orders;
     }
@@ -87,4 +95,7 @@ public class OrderSheet {
     public int getTotalAmount() {
         return totalAmount;
     }
+
+    public boolean getIsPresented() { return isPresented; }
+
 }

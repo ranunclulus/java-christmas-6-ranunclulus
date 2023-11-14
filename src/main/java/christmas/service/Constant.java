@@ -16,4 +16,5 @@ public class Constant {
     public static final int endDay = 31;
     public static final int presentationCondition = 120000;
     public static final int weekendStart = 2;
+    public static final int presentCnt = 1;
 }

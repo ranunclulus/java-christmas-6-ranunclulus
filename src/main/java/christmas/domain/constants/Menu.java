@@ -12,15 +12,24 @@ public enum Menu {
     ICECREAM(MenuType.DESERT, "아이스크림", 5000),
     ZERO_COKE(MenuType.DRINK, "제로콜라", 3000),
     RED_WINE(MenuType.DRINK, "레드와인", 60000),
-    CHAMPAGNE(MenuType.DRINK, "샴페인", 25000);
+    CHAMPAGNE(MenuType.DRINK, "샴페인", 25000, true);
     private MenuType menuType;
     private String menu;
     private int price;
+    private boolean isPresented;
 
     Menu(MenuType menuType, String menu, int price) {
         this.menuType = menuType;
         this.menu = menu;
         this.price = price;
+        this.isPresented = false;
+    }
+
+    Menu(MenuType menuType, String menu, int price, boolean isPresented) {
+        this.menuType = menuType;
+        this.menu = menu;
+        this.price = price;
+        this.isPresented = isPresented;
     }
 
     public MenuType getMenuType() {
@@ -33,5 +42,9 @@ public enum Menu {
 
     public int getPrice() {
         return price;
+    }
+
+    public boolean isPresented() {
+        return isPresented;
     }
 }

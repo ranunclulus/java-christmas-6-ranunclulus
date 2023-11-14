@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.convertor.InputConvertor;
 import christmas.convertor.OrderSheetConvertor;
 import christmas.domain.OrderSheet;
+import christmas.service.validator.MenuValidator;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -24,6 +25,10 @@ public class ChristmasEventController {
         orderSheet.regularPrice();
         OutputView.printBefore(orderSheet.getTotalAmount());
 
+        // 증정 내용
+        presentEvent(orderSheet);
+
+
     }
 
     private void orderMenu(OrderSheet orderSheet) {
@@ -44,5 +49,15 @@ public class ChristmasEventController {
             setVisitDay();
         }
         return 0;
+    }
+
+    private void presentEvent(OrderSheet orderSheet) {
+        orderSheet.calPresented();
+        if (orderSheet.getIsPresented()) {
+            OutputView.isPresented(MenuValidator.getPresentMenu());
+        }
+        if (!orderSheet.getIsPresented()) {
+            OutputView.isNotPresented();
+        }
     }
 }

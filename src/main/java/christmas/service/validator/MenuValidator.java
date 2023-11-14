@@ -13,4 +13,13 @@ public class MenuValidator {
         }
         throw new IllegalArgumentException(ErrorCode.INVALID_ORDER_FORM.getMessage());
     }
+
+    public static String getPresentMenu() {
+        for (Menu menu : Menu.values()) {
+            if (menu.isPresented()) {
+                return menu.getMenu();
+            }
+        }
+        throw new IllegalArgumentException(ErrorCode.INVALID_PRESENTED_MENU.getMessage());
+    }
 }
